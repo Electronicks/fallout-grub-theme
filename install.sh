@@ -93,14 +93,14 @@ if [[ -e /etc/os-release ]]; then
     ID=""
     ID_LIKE=""
     source /etc/os-release
-
+    echo "$ID is like $ID_LIKE"
     if [[ "$ID" =~ (debian|ubuntu|solus|void) || \
           "$ID_LIKE" =~ (debian|ubuntu|void) ]]; then
 
         UPDATE_GRUB='update-grub'
 
-    elif [[ "$ID" =~ (arch|gentoo|arti|bazzite) || \
-            "$ID_LIKE" =~ (^arch|gentoo|^artix|bazzite) ]]; then
+    elif [[ "$ID" =~ (arch|gentoo|artix) || \
+            "$ID_LIKE" =~ (^arch|gentoo|^artix) ]]; then
 
         UPDATE_GRUB="grub-mkconfig -o /boot/${GRUB_DIR}/grub.cfg"
 
@@ -112,6 +112,7 @@ if [[ -e /etc/os-release ]]; then
 
         # BLS etries have 'kernel' class, copy corresponding icon
         if [[ -d /boot/loader/entries && -e icons/${ID}.png ]]; then
+            echo "Adding kernel entry"
             cp icons/${ID}.png icons/kernel.png
         fi
     fi
