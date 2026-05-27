@@ -99,8 +99,8 @@ if [[ -e /etc/os-release ]]; then
 
         UPDATE_GRUB='update-grub'
 
-    elif [[ "$ID" =~ (arch|gentoo|artix) || \
-            "$ID_LIKE" =~ (^arch|gentoo|^artix) ]]; then
+    elif [[ "$ID" =~ (arch|gentoo|arti|bazzite) || \
+            "$ID_LIKE" =~ (^arch|gentoo|^artix|bazzite) ]]; then
 
         UPDATE_GRUB="grub-mkconfig -o /boot/${GRUB_DIR}/grub.cfg"
 
